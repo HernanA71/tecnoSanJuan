@@ -2,682 +2,1160 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>KUBO Fest 2026 — Propuesta Institucional</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta KUBO Fest 2026 — Colegio Bilingüe San Juan de Ávila</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
 
-  /* ===== PAGE SETUP ===== */
   @page {
     size: A4 portrait;
     margin: 0;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
     --blue: #003087;
+    --blue-dark: #00205B;
+    --blue-mid: #0B4FBA;
     --red: #C8102E;
     --yellow: #FFD600;
-    --kblue: #29ABE2;
-    --green: #27AE60;
+    --kblue: #1EB6E8;
+    --green: #1E8E3E;
     --orange: #E67E22;
-    --gray: #444;
-    --lgray: #f5f7fb;
-    --border: #dde4f0;
+    --purple: #6C5CE7;
+    --text: #1F2937;
+    --gray: #4B5563;
+    --light-bg: #F3F6FC;
+    --border: #D1D5DB;
   }
 
   body {
     font-family: 'Open Sans', sans-serif;
-    color: #222;
-    background: #dde4f0;
+    color: var(--text);
+    background: #525659;
     font-size: 13px;
-    line-height: 1.5;
-    print-color-adjust: exact;
+    line-height: 1.45;
     -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* ===== PRINT BUTTON (hidden on print) ===== */
+  /* BARRA DE BOTÓN DE IMPRESIÓN (visible solo en pantalla) */
   .print-bar {
-    max-width: 794px;
-    margin: 20px auto 10px;
+    width: 210mm;
+    margin: 18px auto 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    background: #1F2937;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  .print-bar-info {
+    color: #E5E7EB;
+    font-size: 13px;
+  }
+
+  .print-bar-info strong {
+    color: var(--yellow);
+    font-family: 'Montserrat', sans-serif;
   }
 
   .btn-print {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--blue), #0050bb);
+    gap: 10px;
+    background: linear-gradient(135deg, #0050bb, #003087);
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 14px;
     padding: 12px 28px;
-    border: none;
+    border: 2px solid var(--yellow);
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,48,135,.4);
-    transition: all .2s;
-    letter-spacing: .5px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
   }
 
   .btn-print:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,48,135,.5);
+    background: linear-gradient(135deg, #0B4FBA, #0050bb);
+    box-shadow: 0 6px 20px rgba(255,214,0,0.3);
   }
 
-  .btn-print svg { width: 20px; height: 20px; fill: white; }
-  .btn-hint { font-size: 12px; color: #666; font-family: 'Open Sans', sans-serif; }
-
-  @media print {
-    body { background: white; }
-    .print-bar { display: none; }
-    .page { box-shadow: none; margin: 0 !important; page-break-after: always; }
-    .page:last-child { page-break-after: auto; }
+  .btn-print svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
   }
 
-  /* ===== PAGE ===== */
+  /* ================= PÁGINA A4 ================= */
   .page {
-    width: 794px;      /* A4 at 96dpi */
-    min-height: 1123px; /* A4 at 96dpi */
-    margin: 0 auto 20px;
+    width: 210mm;
+    height: 296.5mm;
+    max-height: 296.5mm;
+    margin: 0 auto 18px;
     background: white;
-    box-shadow: 0 8px 40px rgba(0,0,80,.18);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    position: relative;
     overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .page:last-of-type {
+    margin-bottom: 30px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  @media print {
+    body {
+      background: white;
+    }
+    .print-bar {
+      display: none !important;
+    }
+    .page {
+      margin: 0 !important;
+      box-shadow: none !important;
+      width: 210mm !important;
+      height: 296.5mm !important;
+      max-height: 296.5mm !important;
+    }
+  }
+
+  /* ================= ENCABEZADO PÁGINA 1 ================= */
+  .header-p1 {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 55%, var(--kblue) 100%);
+    color: white;
+    padding: 20px 32px 16px;
     position: relative;
   }
 
-  /* ===== HEADER (Page 1) ===== */
-  .hdr {
-    background: linear-gradient(135deg, var(--blue) 0%, #0050bb 55%, var(--kblue) 100%);
-    color: white;
-    padding: 28px 40px 22px;
-  }
-
-  .hdr-row {
+  .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
   }
 
-  .logo-block { display: flex; align-items: center; gap: 14px; }
+  .logo-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-  .logo-img {
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(255,255,255,.5);
-    box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  .logo-school {
+    width: 66px;
+    height: 66px;
     background: white;
+    border-radius: 50%;
     padding: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.85);
   }
 
-  .logo-text .school { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; opacity: .8; letter-spacing: 1.5px; text-transform: uppercase; }
-  .logo-text .name { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; line-height: 1.2; }
-  .logo-text .city { font-size: 11px; opacity: .7; margin-top: 2px; }
+  .school-names .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
 
-  .title-block { text-align: center; }
+  .school-names .name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .school-names .location {
+    font-size: 11px;
+    opacity: 0.8;
+  }
+
+  .title-center {
+    text-align: center;
+  }
+
   .event-pill {
     display: inline-block;
     background: var(--red);
+    color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 9px;
-    letter-spacing: 2.5px;
+    font-size: 10px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 5px 16px;
+    padding: 4px 14px;
     border-radius: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   }
 
   .event-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 46px;
-    letter-spacing: -1px;
+    font-size: 42px;
     line-height: 1;
     color: var(--yellow);
-    text-shadow: 0 3px 12px rgba(0,0,0,.3);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    letter-spacing: -0.5px;
   }
 
-  .event-title span { color: white; }
-  .event-sub { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 13px; opacity: .88; margin-top: 5px; }
+  .event-title span {
+    color: white;
+  }
 
-  /* KUBO SVG robot */
-  .kubo-svg { width: 80px; flex-shrink: 0; }
-
-  .rainbow-bar { height: 6px; background: linear-gradient(90deg, var(--red), var(--yellow), var(--kblue), var(--green), var(--red)); }
-
-  /* ===== BODY ===== */
-  .body { padding: 26px 40px; flex: 1; }
-
-  .intro {
-    background: #EDF4FF;
-    border-left: 5px solid var(--blue);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 18px;
-    margin-bottom: 22px;
+  .event-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     font-size: 13px;
-    line-height: 1.7;
-    color: var(--gray);
+    opacity: 0.95;
+    margin-top: 4px;
   }
 
-  .intro strong { color: var(--blue); }
+  /* KUBO SVG */
+  .kubo-avatar {
+    width: 76px;
+    height: 82px;
+    flex-shrink: 0;
+  }
 
-  /* Section title */
-  .sec {
+  .color-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--yellow) 25%, var(--kblue) 50%, var(--green) 75%, var(--purple) 100%);
+  }
+
+  /* ================= ENCABEZADO PÁGINA 2 ================= */
+  .header-p2 {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 70%, var(--blue-mid) 100%);
+    color: white;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .h2-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .h2-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: white;
+    object-fit: cover;
+    border: 2px solid white;
+  }
+
+  .h2-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--yellow);
+    line-height: 1;
+  }
+
+  .h2-title span {
+    color: white;
+  }
+
+  .h2-sub {
+    font-size: 11.5px;
+    font-weight: 600;
+    opacity: 0.9;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .h2-meta {
+    text-align: right;
+    font-size: 11.5px;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .h2-meta strong {
+    color: var(--yellow);
+  }
+
+  /* ================= CUERPO ================= */
+  .page-content {
+    padding: 16px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* INTRODUCCIÓN */
+  .intro-box {
+    background: var(--light-bg);
+    border-left: 5px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2D3748;
+  }
+
+  .intro-box strong {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* TÍTULOS DE SECCIÓN */
+  .sec-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background: var(--blue);
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 2px;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    padding: 8px 16px;
-    border-radius: 7px;
-    margin-bottom: 14px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin: 8px 0 10px;
   }
 
-  /* Objectives 3-column grid */
+  .sec-heading .icon {
+    font-size: 15px;
+  }
+
+  /* OBJETIVOS: 3 columnas x 2 filas */
   .obj-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin-bottom: 22px;
   }
 
   .obj-card {
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 13px 11px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    background: white;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
   }
 
-  .obj-ico { font-size: 22px; }
-  .obj-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: var(--blue); }
-  .obj-desc { font-size: 11.5px; color: var(--gray); line-height: 1.5; }
+  .obj-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
 
-  /* Categories */
-  .cats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .obj-ico {
+    font-size: 18px;
+  }
 
-  .cat {
-    border-radius: 12px;
-    padding: 18px 20px;
+  .obj-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    color: var(--blue);
+    line-height: 1.2;
+  }
+
+  .obj-text {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--gray);
+  }
+
+  /* CATEGORÍAS */
+  .cats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .cat-card {
+    border-radius: 10px;
+    padding: 14px 16px;
     color: white;
     position: relative;
     overflow: hidden;
   }
 
-  .cat::before {
-    content: '';
-    position: absolute;
-    right: -24px; top: -24px;
-    width: 100px; height: 100px;
-    background: rgba(255,255,255,.1);
+  .cat-card.cat-a {
+    background: linear-gradient(135deg, #D97706, #B45309);
+  }
+
+  .cat-card.cat-b {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+
+  .cat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .cat-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1;
+    background: rgba(255,255,255,0.2);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-  }
-
-  .cat-a { background: linear-gradient(135deg, #F39C12, #D68910); }
-  .cat-b { background: linear-gradient(135deg, var(--green), #1E8449); }
-
-  .cat-badge { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; line-height: 1; }
-  .cat-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; margin: 4px 0 8px; }
-  .cat-desc { font-size: 12px; opacity: .93; line-height: 1.55; }
-  .cat-tag { display: inline-block; background: rgba(255,255,255,.25); border-radius: 12px; padding: 3px 12px; font-size: 11px; font-weight: 600; margin-top: 8px; }
-
-  /* ===== FOOTER (common) ===== */
-  .ftr {
-    background: var(--blue);
-    color: white;
-    padding: 14px 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 10.5px;
-    margin-top: auto;
+    justify-content: center;
   }
 
-  .ftr-left { opacity: .85; line-height: 1.65; }
-  .ftr-center { text-align: center; }
-  .ftr-brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 17px; color: var(--yellow); }
-  .ftr-sub { font-size: 9px; opacity: .7; margin-top: 2px; }
-  .ftr-right { text-align: right; opacity: .85; line-height: 1.65; }
-
-  /* ===== PAGE 2 HEADER (mini) ===== */
-  .hdr2 {
-    background: linear-gradient(135deg, var(--blue), #0050bb);
-    color: white;
-    padding: 16px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .cat-target {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    background: rgba(0,0,0,0.22);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
   }
 
-  .hdr2-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; color: var(--yellow); letter-spacing: -0.5px; }
-  .hdr2-title span { color: white; }
-  .hdr2-sub { font-size: 11px; opacity: .85; margin-top: 2px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
-  .hdr2-right { text-align: right; font-size: 11.5px; opacity: .85; line-height: 1.6; }
+  .cat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
 
-  /* ===== AWARDS ===== */
-  .awards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
+  .cat-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.95;
+  }
 
-  .aw {
-    border-radius: 12px;
-    padding: 16px 14px;
+  /* PREMIACIÓN (Página 1 al final) */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .award-box {
+    border-radius: 8px;
+    padding: 10px 12px;
     text-align: center;
     border: 2px solid transparent;
   }
 
-  .aw.g { background: linear-gradient(160deg, #FFFBEA, #FFF3CD); border-color: #F5A623; }
-  .aw.s { background: linear-gradient(160deg, #F8F9FA, #ECEFF1); border-color: #90A4AE; }
-  .aw.b { background: linear-gradient(160deg, #FBF0ED, #FFCCBC); border-color: #BCAAA4; }
-
-  .aw-medal { font-size: 32px; display: block; margin-bottom: 6px; }
-  .aw-place { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; color: var(--blue); margin-bottom: 5px; }
-  .aw-prize { font-size: 11.5px; color: var(--gray); line-height: 1.6; }
-
-  /* ===== LOGISTICS ===== */
-  .log-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
-
-  .log-c {
-    background: var(--lgray);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 12px;
-    text-align: center;
+  .award-box.first {
+    background: #FFFDF0;
+    border-color: #F59E0B;
   }
 
-  .log-ico { font-size: 24px; display: block; margin-bottom: 6px; }
-  .log-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: var(--blue); margin-bottom: 4px; }
-  .log-desc { font-size: 11.5px; color: var(--gray); line-height: 1.45; }
+  .award-box.second {
+    background: #F8FAFC;
+    border-color: #94A3B8;
+  }
 
-  /* ===== DATES BOX ===== */
-  .dates-box {
-    background: linear-gradient(135deg, var(--blue), #0060cc);
+  .award-box.all {
+    background: #EFF6FF;
+    border-color: #60A5FA;
+  }
+
+  .award-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .award-place {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--blue);
+    margin-bottom: 2px;
+  }
+
+  .award-detail {
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--gray);
+  }
+
+  .award-detail strong {
+    color: #111827;
+  }
+
+  /* ================= PÁGINA 2 ELEMENTOS ================= */
+
+  /* FECHAS & SEDE HERO BANNER */
+  .hero-dates {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, #0B4FBA 100%);
     color: white;
-    border-radius: 12px;
-    padding: 18px 24px;
+    border-radius: 10px;
+    padding: 14px 18px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 22px;
+    gap: 18px;
+    box-shadow: 0 4px 12px rgba(0,48,135,0.25);
   }
 
-  .dates-ico { font-size: 36px; }
-  .dates-body { flex: 1; }
-  .dates-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; margin-bottom: 4px; }
-  .dates-sub { font-size: 11.5px; opacity: .88; margin-bottom: 10px; }
-  .dates-opts { display: flex; gap: 14px; }
+  .hero-dates-ico {
+    font-size: 38px;
+    flex-shrink: 0;
+  }
 
-  .date-opt {
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.35);
-    border-radius: 10px;
-    padding: 10px 18px;
+  .hero-dates-content {
+    flex: 1;
+  }
+
+  .hero-dates-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14.5px;
+    color: var(--yellow);
+    margin-bottom: 3px;
+  }
+
+  .hero-dates-text {
+    font-size: 12px;
+    line-height: 1.45;
+    opacity: 0.95;
+    margin-bottom: 8px;
+  }
+
+  .date-pills {
+    display: flex;
+    gap: 12px;
+  }
+
+  .date-pill {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 8px;
+    padding: 6px 16px;
     text-align: center;
+    flex: 1;
   }
 
-  .date-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; opacity: .8; margin-bottom: 3px; }
-  .date-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 18px; }
-  .date-when { font-size: 10px; opacity: .82; margin-top: 2px; }
+  .date-pill .opt {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+  }
 
-  /* ===== RESPONSIBILITIES ===== */
-  .resp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .date-pill .day {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 1.1;
+    color: white;
+  }
 
-  .resp-c { border-radius: 10px; padding: 16px; }
-  .resp-c.host { background: linear-gradient(135deg, #EBF5FB, #D5E8F8); border: 1px solid #3498DB; }
-  .resp-c.kubo { background: linear-gradient(135deg, #E8F8F5, #D0EDE6); border: 1px solid #1ABC9C; }
+  .date-pill .week {
+    font-size: 10.5px;
+    opacity: 0.9;
+  }
+
+  /* LOGÍSTICA: 6 tarjetas (3x2) */
+  .log-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .log-item {
+    background: var(--light-bg);
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .log-ico {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .log-item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11.5px;
+    color: var(--blue);
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .log-item-desc {
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--gray);
+  }
+
+  /* RESPONSABILIDADES: 2 columnas */
+  .resp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .resp-card {
+    border-radius: 8px;
+    padding: 10px 14px;
+    border: 1.5px solid transparent;
+  }
+
+  .resp-card.host {
+    background: #F0F7FF;
+    border-color: #93C5FD;
+  }
+
+  .resp-card.kubo {
+    background: #F0FDF4;
+    border-color: #86EFAC;
+  }
 
   .resp-title {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
+    font-weight: 800;
+    font-size: 12.5px;
     display: flex;
     align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .resp-card.host .resp-title {
+    color: var(--blue);
+  }
+
+  .resp-card.kubo .resp-title {
+    color: var(--green);
+  }
+
+  .resp-list {
+    list-style: none;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: #374151;
+  }
+
+  .resp-list li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2px;
+  }
+
+  .resp-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: 900;
+  }
+
+  .resp-card.host .resp-list li::before {
+    color: var(--blue);
+  }
+
+  .resp-card.kubo .resp-list li::before {
+    color: var(--green);
+  }
+
+  /* CRONOGRAMA: 4 tarjetas horizontales */
+  .crono-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-    margin-bottom: 10px;
   }
 
-  .resp-c.host .resp-title { color: var(--blue); }
-  .resp-c.kubo .resp-title { color: #148a73; }
-
-  .resp-list { list-style: none; font-size: 12px; color: var(--gray); }
-  .resp-list li { padding: 3px 0; display: flex; align-items: flex-start; gap: 7px; }
-  .resp-list li::before { content: '✓'; font-weight: 700; flex-shrink: 0; }
-  .resp-c.host .resp-list li::before { color: var(--blue); }
-  .resp-c.kubo .resp-list li::before { color: #1ABC9C; }
-
-  /* ===== TIMELINE ===== */
-  .tl { position: relative; padding-left: 24px; }
-
-  .tl::before {
-    content: '';
-    position: absolute;
-    left: 8px; top: 6px; bottom: 6px;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--blue), var(--kblue));
-    border-radius: 3px;
+  .crono-card {
+    background: white;
+    border: 1.5px solid #E2E8F0;
+    border-top: 4px solid var(--blue);
+    border-radius: 8px;
+    padding: 8px 10px;
+    position: relative;
   }
 
-  .tl-item { position: relative; padding-left: 22px; margin-bottom: 14px; }
+  .crono-card:nth-child(1) { border-top-color: var(--blue); }
+  .crono-card:nth-child(2) { border-top-color: var(--orange); }
+  .crono-card:nth-child(3) { border-top-color: var(--purple); }
+  .crono-card:nth-child(4) { border-top-color: var(--red); background: #FFF5F5; }
 
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -18px; top: 5px;
-    width: 13px; height: 13px;
-    background: var(--blue);
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--blue);
+  .crono-step {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 9.5px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .tl-date { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; }
-  .tl-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: var(--blue); margin: 3px 0 2px; }
-  .tl-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+  .crono-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11.5px;
+    color: var(--blue);
+    margin: 2px 0 3px;
+    line-height: 1.2;
+  }
 
+  .crono-card:nth-child(4) .crono-date {
+    color: var(--red);
+  }
+
+  .crono-desc {
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--gray);
+  }
+
+  /* ================= PIE DE PÁGINA ================= */
+  .footer {
+    background: var(--blue-dark);
+    color: white;
+    padding: 10px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    border-top: 3px solid var(--yellow);
+  }
+
+  .footer-left {
+    opacity: 0.9;
+    line-height: 1.4;
+  }
+
+  .footer-center {
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--yellow);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-page-num {
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  .footer-right {
+    text-align: right;
+    opacity: 0.9;
+    line-height: 1.4;
+  }
 </style>
 </head>
 <body>
 
-<!-- PRINT BUTTON BAR -->
+<!-- BARRA DE ACCIÓN SUPERIOR -->
 <div class="print-bar">
-  <span class="btn-hint">💡 Usa Chrome o Edge → Ctrl+P → "Guardar como PDF"</span>
+  <div class="print-bar-info">
+    📄 <strong>Propuesta Institucional KUBO Fest 2026</strong> — Diseñada exactamente en <strong>2 hojas A4</strong>
+  </div>
   <button class="btn-print" onclick="window.print()">
     <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-    Imprimir / Guardar PDF
+    Imprimir / Guardar como PDF
   </button>
 </div>
 
-<!-- ==================== PÁGINA 1 ==================== -->
+<!-- ============================================================== -->
+<!-- PÁGINA 1: PRESENTACIÓN, OBJETIVOS, CATEGORÍAS Y PREMIACIÓN   -->
+<!-- ============================================================== -->
 <div class="page">
 
-  <!-- Header -->
-  <div class="hdr">
-    <div class="hdr-row">
-      <div class="logo-block">
-        <img src="logoSanJuan.png" alt="Logo San Juan de Ávila" class="logo-img">
-        <div class="logo-text">
-          <div class="school">Colegio Bilingüe</div>
-          <div class="name">San Juan de Ávila</div>
-          <div class="city">Bogotá, Colombia</div>
+  <!-- Encabezado Principal -->
+  <div>
+    <div class="header-p1">
+      <div class="header-top">
+        <div class="logo-block">
+          <img src="logoSanJuan.png" alt="Logo San Juan de Ávila" class="logo-school">
+          <div class="school-names">
+            <div class="subtitle">Colegio Bilingüe</div>
+            <div class="name">San Juan de Ávila</div>
+            <div class="location">Bogotá, Colombia · Sede Principal</div>
+          </div>
         </div>
-      </div>
 
-      <div class="title-block">
-        <div class="event-pill">🤖 Propuesta Institucional · 2026</div>
-        <div class="event-title">KUBO <span>FEST</span></div>
-        <div class="event-sub">Primer Torneo Intercolegial de Robótica Educativa</div>
-      </div>
+        <div class="title-center">
+          <div class="event-pill">🤖 PROPUESTA OFICIAL · 2026</div>
+          <div class="event-title">KUBO <span>FEST</span></div>
+          <div class="event-desc">Primer Torneo Intercolegial de Robótica Educativa</div>
+        </div>
 
-      <!-- KUBO Robot SVG -->
-      <svg class="kubo-svg" viewBox="0 0 80 95" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="13" y="30" width="54" height="46" rx="9" fill="white" stroke="#29ABE2" stroke-width="3.5"/>
-        <rect x="20" y="37" width="40" height="24" rx="6" fill="#29ABE2"/>
-        <circle cx="32" cy="49" r="6" fill="white"/>
-        <circle cx="48" cy="49" r="6" fill="white"/>
-        <circle cx="32" cy="49" r="3" fill="#003087"/>
-        <circle cx="48" cy="49" r="3" fill="#003087"/>
-        <rect x="24" y="21" width="32" height="12" rx="6" fill="#29ABE2"/>
-        <circle cx="40" cy="27" r="5" fill="#FFD600" stroke="white" stroke-width="2"/>
-        <rect x="8"  y="63" width="14" height="10" rx="5" fill="#29ABE2"/>
-        <rect x="58" y="63" width="14" height="10" rx="5" fill="#29ABE2"/>
-        <line x1="40" y1="21" x2="40" y2="12" stroke="#003087" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="40" cy="8" r="5" fill="#C8102E"/>
-        <rect x="18" y="80" width="44" height="12" rx="4" fill="#FFD600" stroke="#E67E22" stroke-width="2"/>
-        <path d="M28 86 L40 81 L52 86 L40 91 Z" fill="#E67E22"/>
-      </svg>
-    </div>
-  </div>
-  <div class="rainbow-bar"></div>
-
-  <!-- Body Page 1 -->
-  <div class="body">
-
-    <!-- Intro -->
-    <div class="intro">
-      El <strong>Colegio Bilingüe San Juan de Ávila</strong> presenta esta propuesta para organizar el <strong>primer KUBO Fest intercolegial</strong>, un torneo de robótica educativa inspirado en el formato de la <strong>World Robot Olympiad (WRO)</strong>, dirigido a estudiantes de <strong>Kínder, Transición y Primero</strong> de diferentes instituciones educativas de Bogotá que utilicen el sistema de programación KUBO. El colegio anfitrión invitará a <strong>cinco colegios participantes</strong> para vivir una experiencia única de aprendizaje, competencia amistosa y celebración del pensamiento computacional desde edades tempranas.
-    </div>
-
-    <!-- Objectives -->
-    <div class="sec">🎯 Objetivos del Evento</div>
-    <div class="obj-grid">
-      <div class="obj-card">
-        <div class="obj-ico">🤝</div>
-        <div class="obj-title">Integración Intercolegial</div>
-        <div class="obj-desc">Crear un espacio de encuentro entre instituciones que comparten el enfoque de robótica con KUBO desde los grados iniciales.</div>
-      </div>
-      <div class="obj-card">
-        <div class="obj-ico">🧠</div>
-        <div class="obj-title">Pensamiento Computacional</div>
-        <div class="obj-desc">Fortalecer habilidades de secuenciación, direccionalidad y resolución de problemas con TagTiles y tapetes de KUBO.</div>
-      </div>
-      <div class="obj-card">
-        <div class="obj-ico">🏆</div>
-        <div class="obj-title">Competencia Sana</div>
-        <div class="obj-desc">Fomentar el trabajo en equipo, la autonomía y la resiliencia en un ambiente lúdico y de reconocimiento mutuo.</div>
-      </div>
-      <div class="obj-card">
-        <div class="obj-ico">🌟</div>
-        <div class="obj-title">Visibilización Institucional</div>
-        <div class="obj-desc">Posicionar al Colegio San Juan de Ávila como líder en innovación educativa y robótica a nivel preescolar en Bogotá.</div>
-      </div>
-      <div class="obj-card">
-        <div class="obj-ico">🎓</div>
-        <div class="obj-title">Alianza con Editorial KUBO</div>
-        <div class="obj-desc">Fortalecer la relación con la editorial, abriendo espacios de colaboración pedagógica y visibilidad mutua.</div>
-      </div>
-      <div class="obj-card">
-        <div class="obj-ico">📸</div>
-        <div class="obj-title">Experiencia Memorable</div>
-        <div class="obj-desc">Garantizar que cada estudiante viva un momento de orgullo y celebración, sin importar el resultado del torneo.</div>
+        <!-- Robot KUBO SVG -->
+        <svg class="kubo-avatar" viewBox="0 0 80 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="13" y="30" width="54" height="46" rx="9" fill="white" stroke="#1EB6E8" stroke-width="3.5"/>
+          <rect x="20" y="37" width="40" height="24" rx="6" fill="#1EB6E8"/>
+          <circle cx="32" cy="49" r="6" fill="white"/>
+          <circle cx="48" cy="49" r="6" fill="white"/>
+          <circle cx="32" cy="49" r="3" fill="#003087"/>
+          <circle cx="48" cy="49" r="3" fill="#003087"/>
+          <rect x="24" y="21" width="32" height="12" rx="6" fill="#1EB6E8"/>
+          <circle cx="40" cy="27" r="5" fill="#FFD600" stroke="white" stroke-width="2"/>
+          <rect x="8"  y="63" width="14" height="10" rx="5" fill="#1EB6E8"/>
+          <rect x="58" y="63" width="14" height="10" rx="5" fill="#1EB6E8"/>
+          <line x1="40" y1="21" x2="40" y2="12" stroke="#003087" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="8" r="5" fill="#C8102E"/>
+          <rect x="18" y="80" width="44" height="12" rx="4" fill="#FFD600" stroke="#E67E22" stroke-width="2"/>
+          <path d="M28 86 L40 81 L52 86 L40 91 Z" fill="#E67E22"/>
+        </svg>
       </div>
     </div>
-
-    <!-- Categories -->
-    <div class="sec">🏅 Categorías de Competencia</div>
-    <div class="cats">
-      <div class="cat cat-a">
-        <div class="cat-badge">A</div>
-        <div class="cat-name">Categoría Pre-K</div>
-        <div class="cat-desc">Dirigida a estudiantes de <strong>Kínder y Transición</strong>. Retos de secuenciación básica con TagTiles de avance y giro, navegando tapetes temáticos de KUBO. Énfasis en direccionalidad y resolución paso a paso.</div>
-        <span class="cat-tag">⭐ Kínder &rarr; Transición</span>
-      </div>
-      <div class="cat cat-b">
-        <div class="cat-badge">B</div>
-        <div class="cat-name">Categoría First</div>
-        <div class="cat-desc">Dirigida a estudiantes de <strong>Primero (Grado 1°)</strong>. Retos con mayor complejidad: rutas multi-etapa, obstáculos y TagTiles de giro derecha/izquierda. Pensamiento lógico y depuración de rutas.</div>
-        <span class="cat-tag">🚀 Grado Primero</span>
-      </div>
-    </div>
-
-  </div><!-- end body p1 -->
-
-  <!-- Footer Page 1 -->
-  <div class="ftr">
-    <div class="ftr-left"><strong>Colegio Bilingüe San Juan de Ávila</strong><br>Vía Suba – Cota, Bogotá · colsanjuandeavila.edu.co</div>
-    <div class="ftr-center">
-      <div class="ftr-brand">KUBO FEST 2026</div>
-      <div class="ftr-sub">Página 1 de 2</div>
-    </div>
-    <div class="ftr-right"><strong>Docente:</strong> Hernán Alberto Rodríguez<br><strong>Área:</strong> Pre-Tecnología e Informática</div>
+    <div class="color-bar"></div>
   </div>
 
-</div><!-- end page 1 -->
+  <!-- Contenido Página 1 -->
+  <div class="page-content">
 
+    <!-- Introducción -->
+    <div class="intro-box">
+      El <strong>Colegio Bilingüe San Juan de Ávila</strong> propone ser la sede anfitriona del <strong>primer KUBO Fest</strong>: un torneo de robótica educativa inspirado en los estándares internacionales de la <strong>World Robot Olympiad (WRO)</strong>. El evento reunirá a <strong>cinco colegios invitados de Bogotá</strong> con niños de <strong>Kínder, Transición y Primero</strong> para resolver retos por etapas usando el robot KUBO y TagTiles, celebrando el pensamiento computacional desde la primera infancia en un entorno colaborativo.
+    </div>
 
-<!-- ==================== PÁGINA 2 ==================== -->
-<div class="page">
-
-  <!-- Mini header page 2 -->
-  <div class="hdr2">
+    <!-- Sección 1: Objetivos -->
     <div>
-      <div class="hdr2-title">KUBO <span>FEST</span> 2026</div>
-      <div class="hdr2-sub">Propuesta Institucional · Colegio Bilingüe San Juan de Ávila</div>
-    </div>
-    <div class="hdr2-right">
-      <strong>Docente:</strong> Hernán Alberto Rodríguez<br>
-      <strong>Septiembre 2026</strong>
-    </div>
-  </div>
-  <div class="rainbow-bar"></div>
-
-  <!-- Body Page 2 -->
-  <div class="body">
-
-    <!-- Awards -->
-    <div class="sec">🥇 Premiación</div>
-    <div class="awards">
-      <div class="aw g">
-        <span class="aw-medal">🥇</span>
-        <div class="aw-place">1.er Puesto</div>
-        <div class="aw-prize">🏆 <strong>Trofeo institucional</strong><br>🎖️ Diploma oficial firmado<br>📸 Sesión fotográfica de honor</div>
-      </div>
-      <div class="aw s">
-        <span class="aw-medal">🥈</span>
-        <div class="aw-place">2.do Puesto</div>
-        <div class="aw-prize">🎖️ <strong>Diploma oficial</strong><br>🌟 Reconocimiento en tarima<br>📸 Sesión fotográfica de honor</div>
-      </div>
-      <div class="aw b">
-        <span class="aw-medal">🌟</span>
-        <div class="aw-place">Todos los Equipos</div>
-        <div class="aw-prize">📜 <strong>Diploma de participación</strong><br>🤖 Para todos los colegios<br>📸 Recuerdo fotográfico grupal</div>
-      </div>
-    </div>
-
-    <!-- Logistics -->
-    <div class="sec">🗂️ Logística del Evento</div>
-    <div class="log-grid">
-      <div class="log-c">
-        <span class="log-ico">🏫</span>
-        <div class="log-title">Sede Anfitriona</div>
-        <div class="log-desc">Colegio Bilingüe San Juan de Ávila como organizador oficial del torneo</div>
-      </div>
-      <div class="log-c">
-        <span class="log-ico">🏫</span>
-        <div class="log-title">Colegios Participantes</div>
-        <div class="log-desc">5 instituciones invitadas que usen KUBO en pre-tecnología y robótica</div>
-      </div>
-      <div class="log-c">
-        <span class="log-ico">🍎</span>
-        <div class="log-title">Refrigerio</div>
-        <div class="log-desc">El colegio anfitrión ofrece refrigerio para todos los niños y acompañantes</div>
-      </div>
-      <div class="log-c">
-        <span class="log-ico">🎪</span>
-        <div class="log-title">Ambientación WRO</div>
-        <div class="log-desc">Mesas blancas estilo WRO con tapetes, organizado por la editorial KUBO</div>
-      </div>
-      <div class="log-c">
-        <span class="log-ico">⚖️</span>
-        <div class="log-title">Formato del Torneo</div>
-        <div class="log-desc">Retos por equipos, jueces evaluadores, apertura y premiación oficial</div>
-      </div>
-      <div class="log-c">
-        <span class="log-ico">📅</span>
-        <div class="log-title">Duración</div>
-        <div class="log-desc">Un día completo de jornada escolar (mañana–tarde), jueves o viernes</div>
-      </div>
-    </div>
-
-    <!-- Dates -->
-    <div class="dates-box">
-      <div class="dates-ico">📅</div>
-      <div class="dates-body">
-        <div class="dates-title">Fechas Propuestas — Semana siguiente al receso estudiantil</div>
-        <div class="dates-sub">La invitación se envía antes del 30 de septiembre. El evento se realizará en una de estas dos fechas, a confirmar con directivas y editorial:</div>
-        <div class="dates-opts">
-          <div class="date-opt">
-            <div class="date-label">Opción 1</div>
-            <div class="date-val">Jueves</div>
-            <div class="date-when">Semana post-receso · Oct. 2026</div>
+      <div class="sec-heading"><span class="icon">🎯</span> Objetivos Estratégicos del Torneo</div>
+      <div class="obj-grid">
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">🤝</span>
+            <div class="obj-title">Integración Intercolegial</div>
           </div>
-          <div class="date-opt">
-            <div class="date-label">Opción 2</div>
-            <div class="date-val">Viernes</div>
-            <div class="date-when">Semana post-receso · Oct. 2026</div>
+          <div class="obj-text">Crear una red de colegios que impulsan la robótica y el pensamiento computacional temprano en Bogotá.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">🧠</span>
+            <div class="obj-title">Pensamiento Lógico</div>
+          </div>
+          <div class="obj-text">Afianzar habilidades de secuenciación, direccionalidad, algoritmos tangibles y depuración de errores con KUBO.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">🏆</span>
+            <div class="obj-title">Competencia Sana (WRO)</div>
+          </div>
+          <div class="obj-text">Inculcar trabajo en equipo, resiliencia y liderazgo en mesas de retos con formato lúdico y formativo.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">🌟</span>
+            <div class="obj-title">Liderazgo Institucional</div>
+          </div>
+          <div class="obj-text">Posicionar al San Juan de Ávila como referente en innovación pedagógica y tecnologías para la primera infancia.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">🎓</span>
+            <div class="obj-title">Alianza con Editorial KUBO</div>
+          </div>
+          <div class="obj-text">Fortalecer el vínculo con la editorial proveedora de los libros y kits, asegurando acompañamiento y difusión.</div>
+        </div>
+        <div class="obj-card">
+          <div class="obj-header">
+            <span class="obj-ico">📸</span>
+            <div class="obj-title">Experiencia Memorable</div>
+          </div>
+          <div class="obj-text">Garantizar una jornada inolvidable para niños y familias, premiando el esfuerzo de cada participante.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección 2: Categorías -->
+    <div>
+      <div class="sec-heading"><span class="icon">🏅</span> Categorías de Competencia</div>
+      <div class="cats-grid">
+        <div class="cat-card cat-a">
+          <div class="cat-top">
+            <div class="cat-badge">A</div>
+            <div class="cat-target">Kínder y Transición</div>
+          </div>
+          <div class="cat-title">Categoría Pre-K</div>
+          <div class="cat-desc">
+            Retos de secuenciación básica con TagTiles de avance y giro en tapetes temáticos de KUBO. Resolución de laberintos sencillos, conteo de casillas y orientación espacial paso a paso.
+          </div>
+        </div>
+
+        <div class="cat-card cat-b">
+          <div class="cat-top">
+            <div class="cat-badge">B</div>
+            <div class="cat-target">Grado Primero (1°)</div>
+          </div>
+          <div class="cat-title">Categoría First</div>
+          <div class="cat-desc">
+            Retos avanzados con rutas multi-etapa, evasión de obstáculos y uso combinado de giros izquierda/derecha. Optimización de secuencias, depuración activa y trabajo bajo cronómetro.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Responsibilities -->
-    <div class="sec">🤝 Responsabilidades por Actor</div>
-    <div class="resp-grid">
-      <div class="resp-c host">
-        <div class="resp-title">🏫 Colegio San Juan de Ávila (Anfitrión)</div>
-        <ul class="resp-list">
-          <li>Enviar invitaciones oficiales a los colegios participantes</li>
-          <li>Facilitar instalaciones y espacios del evento</li>
-          <li>Proveer refrigerio para todos los participantes</li>
-          <li>Coordinar logística de recepción y protocolo</li>
-          <li>Gestionar diplomas y trofeo de premiación</li>
-          <li>Comunicación institucional y registro fotográfico</li>
-        </ul>
-      </div>
-      <div class="resp-c kubo">
-        <div class="resp-title">🤖 Editorial KUBO</div>
-        <ul class="resp-list">
-          <li>Diseñar y organizar la ambientación estilo WRO</li>
-          <li>Proveer tapetes, TagTiles y robots necesarios</li>
-          <li>Definir los retos y criterios de evaluación</li>
-          <li>Capacitar jueces y árbitros del evento</li>
-          <li>Apoyo en la ceremonia de premiación oficial</li>
-          <li>Visibilización en sus canales y redes sociales</li>
-        </ul>
+    <!-- Sección 3: Premiación -->
+    <div>
+      <div class="sec-heading"><span class="icon">🥇</span> Estructura de Premiación</div>
+      <div class="awards-grid">
+        <div class="award-box first">
+          <span class="award-icon">🏆</span>
+          <div class="award-place">1.er Puesto</div>
+          <div class="award-detail">
+            <strong>Trofeo Institucional</strong><br>
+            + Diplomas oficiales de Campeón<br>
+            + Sesión fotográfica de honor
+          </div>
+        </div>
+
+        <div class="award-box second">
+          <span class="award-icon">🥈</span>
+          <div class="award-place">2.do Puesto</div>
+          <div class="award-detail">
+            <strong>Subcampeonato</strong><br>
+            + Diplomas de Segundo Lugar<br>
+            + Reconocimiento oficial en tarima
+          </div>
+        </div>
+
+        <div class="award-box all">
+          <span class="award-icon">🎖️</span>
+          <div class="award-place">Todos los Equipos</div>
+          <div class="award-detail">
+            <strong>Diplomas de Participación</strong><br>
+            para todos los niños y colegios<br>
+            + Foto grupal oficial del evento
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Timeline -->
-    <div class="sec">📆 Cronograma de Preparación</div>
-    <div class="tl">
-      <div class="tl-item">
-        <div class="tl-date">Antes del 30 de septiembre 2026</div>
-        <div class="tl-title">📨 Envío de Invitaciones Oficiales</div>
-        <div class="tl-desc">Carta formal a los cinco colegios invitados con información del evento, categorías, formato y fechas propuestas.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Primera semana de octubre 2026</div>
-        <div class="tl-title">✅ Confirmación de Participantes y Fecha Definitiva</div>
-        <div class="tl-desc">Recepción de confirmaciones y definición de la fecha en coordinación con directivas y editorial KUBO.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Segunda semana de octubre 2026</div>
-        <div class="tl-title">🛠️ Preparación y Logística Final</div>
-        <div class="tl-desc">Coordinación de espacios, refrigerios, tapetes, diplomas y ambientación. Reunión de alineación con editorial.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Semana post-receso — Jueves o Viernes</div>
-        <div class="tl-title">🏆 ¡Día del KUBO FEST!</div>
-        <div class="tl-desc">Torneo completo: bienvenida, retos por categoría (Pre-K y First), premiación y foto grupal institucional de cierre.</div>
-      </div>
-    </div>
-
-  </div><!-- end body p2 -->
-
-  <!-- Footer Page 2 -->
-  <div class="ftr">
-    <div class="ftr-left"><strong>Colegio Bilingüe San Juan de Ávila</strong><br>Vía Suba – Cota, Bogotá · colsanjuandeavila.edu.co</div>
-    <div class="ftr-center">
-      <div class="ftr-brand">KUBO FEST 2026</div>
-      <div class="ftr-sub">Página 2 de 2</div>
-    </div>
-    <div class="ftr-right"><strong>Docente:</strong> Hernán Alberto Rodríguez<br><strong>Área:</strong> Pre-Tecnología e Informática</div>
   </div>
 
-</div><!-- end page 2 -->
+  <!-- Pie de Página 1 -->
+  <div>
+    <div class="color-bar"></div>
+    <div class="footer">
+      <div class="footer-left">
+        <strong>Colegio Bilingüe San Juan de Ávila</strong><br>
+        Vía Suba – Cota, Bogotá · colsanjuandeavila.edu.co
+      </div>
+      <div class="footer-center">
+        <div class="footer-brand">KUBO FEST 2026</div>
+        <div class="footer-page-num">Hoja 1 de 2</div>
+      </div>
+      <div class="footer-right">
+        <strong>Docente:</strong> Hernán Alberto Rodríguez<br>
+        Área de Pre-Tecnología e Informática
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ============================================================== -->
+<!-- PÁGINA 2: FECHAS, LOGÍSTICA, RESPONSABILIDADES Y CRONOGRAMA   -->
+<!-- ============================================================== -->
+<div class="page">
+
+  <!-- Encabezado Página 2 -->
+  <div>
+    <div class="header-p2">
+      <div class="h2-brand">
+        <img src="logoSanJuan.png" alt="Logo San Juan de Ávila" class="h2-logo">
+        <div>
+          <div class="h2-title">KUBO <span>FEST</span> 2026</div>
+          <div class="h2-sub">Propuesta Institucional · Torneo Intercolegial de Robótica</div>
+        </div>
+      </div>
+      <div class="h2-meta">
+        <strong>Docente proponente:</strong> Hernán Alberto Rodríguez<br>
+        Colegio Bilingüe San Juan de Ávila · Septiembre 2026
+      </div>
+    </div>
+    <div class="color-bar"></div>
+  </div>
+
+  <!-- Contenido Página 2 -->
+  <div class="page-content">
+
+    <!-- Fechas Propuestas Banner -->
+    <div class="hero-dates">
+      <div class="hero-dates-ico">📅</div>
+      <div class="hero-dates-content">
+        <div class="hero-dates-title">Fechas Propuestas — Semana Siguiente al Receso Escolar</div>
+        <div class="hero-dates-text">
+          Las invitaciones se remitirán <strong>antes de finalizar septiembre</strong>. Se plantean dos alternativas para coordinar con directivas y la editorial KUBO:
+        </div>
+        <div class="date-pills">
+          <div class="date-pill">
+            <div class="opt">Opción A (Recomendada)</div>
+            <div class="day">JUEVES</div>
+            <div class="week">Semana post-receso · Octubre 2026</div>
+          </div>
+          <div class="date-pill">
+            <div class="opt">Opción B</div>
+            <div class="day">VIERNES</div>
+            <div class="week">Semana post-receso · Octubre 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Logística: 6 tarjetas compactas -->
+    <div>
+      <div class="sec-heading"><span class="icon">🗂️</span> Logística y Organización del Evento</div>
+      <div class="log-grid">
+        <div class="log-item">
+          <span class="log-ico">🏫</span>
+          <div>
+            <div class="log-item-title">Sede Anfitriona</div>
+            <div class="log-item-desc">Instalaciones del Colegio San Juan de Ávila como anfitrión exclusivo.</div>
+          </div>
+        </div>
+        <div class="log-item">
+          <span class="log-ico">🎒</span>
+          <div>
+            <div class="log-item-title">5 Colegios Invitados</div>
+            <div class="log-item-desc">Instituciones de Bogotá con currículo de robótica KUBO en preescolar.</div>
+          </div>
+        </div>
+        <div class="log-item">
+          <span class="log-ico">🍎</span>
+          <div>
+            <div class="log-item-title">Refrigerio Institucional</div>
+            <div class="log-item-desc">Suministrado por el San Juan de Ávila a niños, docentes y acompañantes.</div>
+          </div>
+        </div>
+        <div class="log-item">
+          <span class="log-ico">🎪</span>
+          <div>
+            <div class="log-item-title">Ambientación WRO</div>
+            <div class="log-item-desc">Mesas blancas con tapetes oficiales montadas por la editorial KUBO.</div>
+          </div>
+        </div>
+        <div class="log-item">
+          <span class="log-ico">⚖️</span>
+          <div>
+            <div class="log-item-title">Jueces y Arbitraje</div>
+            <div class="log-item-desc">Rondas cronometradas por parejas, evaluación formativa y rúbrica clara.</div>
+          </div>
+        </div>
+        <div class="log-item">
+          <span class="log-ico">⏱️</span>
+          <div>
+            <div class="log-item-title">Jornada del Torneo</div>
+            <div class="log-item-desc">Un único día: bienvenida, retos por rondas, premiación y clausura.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Responsabilidades -->
+    <div>
+      <div class="sec-heading"><span class="icon">🤝</span> Matriz de Responsabilidades</div>
+      <div class="resp-grid">
+        <div class="resp-card host">
+          <div class="resp-title">🏫 Colegio San Juan de Ávila (Anfitrión)</div>
+          <ul class="resp-list">
+            <li>Emisión y envío formal de cartas de invitación a colegios.</li>
+            <li>Disposición de espacios físicos (coliseo / auditorio / mesas).</li>
+            <li>Suministro de refrigerios para participantes y docentes.</li>
+            <li>Protocolo de bienvenida, registro y logística general.</li>
+            <li>Gestión y entrega del trofeo de 1.er puesto y diplomas.</li>
+            <li>Registro fotográfico institucional y memoria del evento.</li>
+          </ul>
+        </div>
+
+        <div class="resp-card kubo">
+          <div class="resp-title">🤖 Editorial KUBO (Aliado Técnico)</div>
+          <ul class="resp-list">
+            <li>Diseño técnico y ambientación estilo WRO de la pista.</li>
+            <li>Aporte de tapetes oficiales, TagTiles y robots de apoyo.</li>
+            <li>Definición de retos y criterios de puntuación técnica.</li>
+            <li>Acompañamiento y capacitación a los jueces del evento.</li>
+            <li>Presencia institucional en la ceremonia de premiación.</li>
+            <li>Difusión del evento en sus canales y redes educativas.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Cronograma: 4 tarjetas horizontales -->
+    <div>
+      <div class="sec-heading"><span class="icon">📆</span> Cronograma de Ejecución</div>
+      <div class="crono-row">
+        <div class="crono-card">
+          <div class="crono-step">Fase 1 · Convocatoria</div>
+          <div class="crono-date">Antes del 30 Sep</div>
+          <div class="crono-desc">Envío de cartas formales de invitación a los 5 colegios seleccionados y contacto editorial.</div>
+        </div>
+
+        <div class="crono-card">
+          <div class="crono-step">Fase 2 · Confirmación</div>
+          <div class="crono-date">1.ª Sem. Octubre</div>
+          <div class="crono-desc">Cierre de inscripciones, confirmación de equipos y selección definitiva del día (jueves o viernes).</div>
+        </div>
+
+        <div class="crono-card">
+          <div class="crono-step">Fase 3 · Alistamiento</div>
+          <div class="crono-date">2.ª Sem. Octubre</div>
+          <div class="crono-desc">Reunión de alineación con editorial KUBO, impresión de diplomas, trofeo y logística de refrigerios.</div>
+        </div>
+
+        <div class="crono-card">
+          <div class="crono-step">Fase 4 · ¡El Evento!</div>
+          <div class="crono-date">Post-Receso (Oct)</div>
+          <div class="crono-desc">¡Día del KUBO Fest! Bienvenida, rondas de retos, premiación, entrega de trofeo y clausura.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pie de Página 2 -->
+  <div>
+    <div class="color-bar"></div>
+    <div class="footer">
+      <div class="footer-left">
+        <strong>Colegio Bilingüe San Juan de Ávila</strong><br>
+        Vía Suba – Cota, Bogotá · colsanjuandeavila.edu.co
+      </div>
+      <div class="footer-center">
+        <div class="footer-brand">KUBO FEST 2026</div>
+        <div class="footer-page-num">Hoja 2 de 2</div>
+      </div>
+      <div class="footer-right">
+        <strong>Docente:</strong> Hernán Alberto Rodríguez<br>
+        Área de Pre-Tecnología e Informática
+      </div>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
