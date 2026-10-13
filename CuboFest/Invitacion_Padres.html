@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Oficial KUBO Fest 2026 — Colegio San Juan de Ávila</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #0b1329;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 182, 232, 0.22) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(200, 16, 46, 0.2) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(0, 48, 135, 0.45) 0px, transparent 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+    color: #1f2937;
+  }
+
+  /* BARRA DE ACCIÓN */
+  .toolbar {
+    width: 100%;
+    max-width: 620px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  .btn-print {
+    background: #ffd600;
+    color: #00205b;
+  }
+  .btn-print:hover {
+    background: #ffea75;
+    transform: translateY(-2px);
+  }
+
+  .btn-calendar {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  .btn-calendar:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+  }
+
+  /* CONTENEDOR DE LA TARJETA */
+  .card-container {
+    width: 100%;
+    max-width: 620px;
+    background: #ffffff;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.12);
+    position: relative;
+  }
+
+  /* ENCABEZADO VIBRANTE */
+  .card-header {
+    background: linear-gradient(135deg, #00205b 0%, #003087 52%, #0b4fba 82%, #1eb6e8 100%);
+    color: #ffffff;
+    padding: 30px 28px 22px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .card-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 214, 0, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .card-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba(200, 16, 46, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 16px;
+  }
+
+  .school-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .school-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    border: 2px solid #ffffff;
+    object-fit: cover;
+  }
+
+  .school-text .sub {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+  }
+
+  .school-text .main {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #ffffff;
+  }
+
+  .kubo-badge {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffd600;
+    letter-spacing: 0.5px;
+  }
+
+  .header-main {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .robot-avatar {
+    width: 78px;
+    height: 88px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  }
+
+  .invitation-tag {
+    display: inline-block;
+    background: #c8102e;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+    box-shadow: 0 3px 8px rgba(200, 16, 46, 0.4);
+  }
+
+  .main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1;
+    color: #ffd600;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .main-title span {
+    color: #ffffff;
+  }
+
+  .sub-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.5px;
+  }
+
+  .rainbow-strip {
+    height: 6px;
+    background: linear-gradient(90deg, #c8102e 0%, #ffd600 25%, #1eb6e8 50%, #1e8e3e 75%, #6c5ce7 100%);
+  }
+
+  /* CUERPO DE LA TARJETA */
+  .card-body {
+    padding: 26px 26px 22px;
+    background: #ffffff;
+  }
+
+  .welcome-banner {
+    background: #f0f6ff;
+    border-left: 5px solid #003087;
+    border-radius: 0 14px 14px 0;
+    padding: 15px 18px;
+    margin-bottom: 20px;
+  }
+
+  .welcome-banner h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #003087;
+    margin-bottom: 5px;
+  }
+
+  .welcome-banner p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #374151;
+  }
+
+  .welcome-banner p strong {
+    color: #003087;
+  }
+
+  /* GRID DE DETALLES */
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .detail-card {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .detail-card.highlight {
+    background: #fffdf0;
+    border-color: #fcd34d;
+  }
+
+  .card-icon {
+    font-size: 24px;
+    line-height: 1;
+    background: #ffffff;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+  }
+
+  .card-info .label {
+    font-size: 10.5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #64748b;
+    margin-bottom: 2px;
+  }
+
+  .card-info .value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #003087;
+    line-height: 1.25;
+  }
+
+  .card-info .note {
+    font-size: 11.5px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* SECCIÓN PREMIACIÓN */
+  .trophy-section {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 2px dashed #f59e0b;
+    border-radius: 16px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .trophy-badge {
+    font-size: 34px;
+    line-height: 1;
+    background: #ffffff;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.22);
+    flex-shrink: 0;
+  }
+
+  .trophy-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #92400e;
+    margin-bottom: 3px;
+  }
+
+  .trophy-text p {
+    font-size: 12.5px;
+    color: #78350f;
+    line-height: 1.45;
+  }
+
+  /* BULLETS EXPERIENCIA */
+  .experience-box {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+  }
+
+  .exp-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #003087;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .exp-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .exp-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #475569;
+  }
+
+  .exp-item span.bullet {
+    color: #10b981;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .callout-final {
+    text-align: center;
+    padding: 8px 10px 4px;
+  }
+
+  .callout-final p.cheer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #c8102e;
+    margin-bottom: 3px;
+  }
+
+  .callout-final p.sub {
+    font-size: 12.5px;
+    color: #64748b;
+  }
+
+  /* PIE INSTITUCIONAL */
+  .card-footer {
+    background: #00205b;
+    color: #ffffff;
+    padding: 16px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid #ffd600;
+  }
+
+  .footer-meta .role {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffd600;
+    font-weight: 700;
+  }
+
+  .footer-meta .teacher {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+
+  .footer-school {
+    text-align: right;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.35;
+  }
+
+  .footer-school strong {
+    color: #ffffff;
+  }
+
+  @media (max-width: 560px) {
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+    .main-title {
+      font-size: 34px;
+    }
+    .card-header {
+      padding: 22px 16px;
+    }
+    .card-body {
+      padding: 18px 14px;
+    }
+    .card-footer {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+    }
+    .footer-school {
+      text-align: center;
+    }
+  }
+
+  @media print {
+    body {
+      background: #ffffff;
+      padding: 0;
+    }
+    .toolbar {
+      display: none !important;
+    }
+    .card-container {
+      box-shadow: none;
+      max-width: 100%;
+      border-radius: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN -->
+  <div class="toolbar">
+    <button class="btn-action btn-print" onclick="window.print()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      Guardar / Imprimir Tarjeta
+    </button>
+    <a class="btn-action btn-calendar" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=KUBO+Fest+2026+-+Colegio+San+Juan+de+Avila&dates=20261016T140000Z/20261016T160000Z&details=Primer+Minitorneo+Intercolegiado+de+Robotica+KUBO+Fest.+Acompania+a+tu+hijo+en+los+retos+de+programacion+y+premiacion.&location=Colegio+Bilingue+San+Juan+de+Avila,+Bogota" target="_blank">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+      Agendar en Calendar
+    </a>
+  </div>
+
+  <!-- TARJETA VIRTUAL -->
+  <div class="card-container" id="invitation-card">
+
+    <!-- ENCABEZADO -->
+    <div class="card-header">
+      <div class="header-top">
+        <div class="school-brand">
+          <img src="data:image/png;base64,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" alt="Colegio San Juan de Ávila" class="school-logo">
+          <div class="school-text">
+            <div class="sub">Colegio Bilingüe</div>
+            <div class="main">San Juan de Ávila</div>
+          </div>
+        </div>
+        <div class="kubo-badge">🤖 EDICIÓN 2026</div>
+      </div>
+
+      <div class="header-main">
+        <!-- Robot KUBO SVG -->
+        <svg class="robot-avatar" viewBox="0 0 80 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="13" y="30" width="54" height="46" rx="9" fill="white" stroke="#1EB6E8" stroke-width="3.5"/>
+          <rect x="20" y="37" width="40" height="24" rx="6" fill="#1EB6E8"/>
+          <circle cx="32" cy="49" r="6" fill="white"/>
+          <circle cx="48" cy="49" r="6" fill="white"/>
+          <circle cx="32" cy="49" r="3" fill="#003087"/>
+          <circle cx="48" cy="49" r="3" fill="#003087"/>
+          <rect x="24" y="21" width="32" height="12" rx="6" fill="#1EB6E8"/>
+          <circle cx="40" cy="27" r="5" fill="#FFD600" stroke="white" stroke-width="2"/>
+          <rect x="8"  y="63" width="14" height="10" rx="5" fill="#1EB6E8"/>
+          <rect x="58" y="63" width="14" height="10" rx="5" fill="#1EB6E8"/>
+          <line x1="40" y1="21" x2="40" y2="12" stroke="#003087" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="8" r="5" fill="#C8102E"/>
+          <rect x="18" y="80" width="44" height="12" rx="4" fill="#FFD600" stroke="#E67E22" stroke-width="2"/>
+          <path d="M28 86 L40 81 L52 86 L40 91 Z" fill="#E67E22"/>
+        </svg>
+
+        <div class="invitation-tag">INVITACIÓN ESPECIAL</div>
+        <h1 class="main-title">KUBO <span>FEST</span></h1>
+        <p class="sub-title">1.er Minitorneo Intercolegiado de Robótica Educativa</p>
+      </div>
+    </div>
+
+    <!-- CINTA ARCOÍRIS -->
+    <div class="rainbow-strip"></div>
+
+    <!-- CONTENIDO -->
+    <div class="card-body">
+
+      <!-- MENSAJE DE BIENVENIDA -->
+      <div class="welcome-banner">
+        <h2>¡Apreciados Padres de Familia! 👋</h2>
+        <p>
+          Nos llena de alegría invitarlos a <strong>acompañar, alentar y celebrar a su hijo/a</strong> en nuestro gran minitorneo de robótica. Será una experiencia llena de emoción e ingenio donde nuestros pequeños programadores resolverán desafíos en vivo con el robot KUBO.
+        </p>
+      </div>
+
+      <!-- DETALLES CLAVE -->
+      <div class="details-grid">
+
+        <div class="detail-card highlight">
+          <div class="card-icon">📅</div>
+          <div class="card-info">
+            <div class="label">Fecha del Evento</div>
+            <div class="value">Viernes, 16 de Octubre</div>
+            <div class="note">¡Este viernes!</div>
+          </div>
+        </div>
+
+        <div class="detail-card highlight">
+          <div class="card-icon">⏰</div>
+          <div class="card-info">
+            <div class="label">Horario</div>
+            <div class="value">9:00 a.m. a 11:00 a.m.</div>
+            <div class="note">Jornada de la mañana</div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="card-icon">🏫</div>
+          <div class="card-info">
+            <div class="label">Lugar y Sede</div>
+            <div class="value">Colegio San Juan de Ávila</div>
+            <div class="note">Vía Suba – Cota, Bogotá</div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="card-icon">🎯</div>
+          <div class="card-info">
+            <div class="label">Participantes</div>
+            <div class="value">Kínder, Transición y 1.°</div>
+            <div class="note">Equipos intercolegiales</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECCIÓN PREMIACIÓN -->
+      <div class="trophy-section">
+        <div class="trophy-badge">🏆</div>
+        <div class="trophy-text">
+          <h3>¡Gran Ceremonia de Premiación!</h3>
+          <p>
+            Al finalizar los retos, premiaremos con un <strong>Trofeo Oficial</strong> y <strong>Diplomas de Honor</strong> al equipo ganador de cada categoría, además de diplomas de participación para todos los pequeños participantes.
+          </p>
+        </div>
+      </div>
+
+      <!-- LO QUE VIVIREMOS -->
+      <div class="experience-box">
+        <div class="exp-title">✨ Lo que viviremos juntos en familia</div>
+        <ul class="exp-list">
+          <li class="exp-item">
+            <span class="bullet">✓</span>
+            <span><strong>Retos de Programación:</strong> Guiar al robot KUBO con fichas TagTiles en pistas de retos.</span>
+          </li>
+          <li class="exp-item">
+            <span class="bullet">✓</span>
+            <span><strong>Integración Intercolegial:</strong> Compartir una jornada formativa con colegios invitados.</span>
+          </li>
+          <li class="exp-item">
+            <span class="bullet">✓</span>
+            <span><strong>Tu Acompañamiento:</strong> Tus aplausos y barra serán su mayor motivación en la competencia.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LLAMADO FINAL -->
+      <div class="callout-final">
+        <p class="cheer">¡Tu presencia y apoyo hacen la diferencia!</p>
+        <p class="sub">Ven a ser testigo del talento, la lógica y la creatividad de tu hijo/a.</p>
+      </div>
+
+    </div>
+
+    <!-- PIE INSTITUCIONAL -->
+    <div class="card-footer">
+      <div class="footer-meta">
+        <div class="role">Docente Organizador</div>
+        <div class="teacher">Hernán Alberto Rodríguez</div>
+      </div>
+      <div class="footer-school">
+        <strong>Colegio Bilingüe San Juan de Ávila</strong><br>
+        Área de Pre-Tecnología e Informática
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
