@@ -522,19 +522,20 @@
 
   /* CRONÓMETRO */
   .timer-card {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 14px;
-    padding: 10px 16px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
   }
 
   .timer-display-box {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .timer-icon {
@@ -543,10 +544,11 @@
 
   .timer-clock {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 700;
     color: var(--yellow);
     letter-spacing: 1px;
+    min-width: 75px;
   }
 
   .timer-clock.warning {
@@ -561,7 +563,9 @@
 
   .timer-buttons {
     display: flex;
-    gap: 6px;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .btn-timer {
@@ -571,7 +575,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 11px;
-    padding: 6px 10px;
+    padding: 6px 9px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -579,12 +583,27 @@
 
   .btn-timer:hover {
     background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
   }
 
   .btn-timer.start-btn {
     background: var(--green);
     border-color: var(--green);
     color: white;
+    font-weight: 800;
+  }
+
+  .btn-timer.btn-restart-action {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    border-color: #38bdf8;
+    color: white;
+    font-weight: 800;
+  }
+
+  .btn-timer.btn-zero-action {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
   }
 
   .challenge-tips {
@@ -818,20 +837,22 @@
 
   .giant-controls-bar {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
     padding-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .btn-giant-ctrl {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 22px;
+    padding: 9px 18px;
     border-radius: 30px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 13px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -856,6 +877,19 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
   .btn-giant-reset:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.25); }
+
+  .btn-giant-restart-timer {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: white;
+  }
+  .btn-giant-restart-timer:hover { transform: scale(1.05); }
+
+  .btn-giant-zero-timer {
+    background: rgba(239, 68, 68, 0.25);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #fca5a5;
+  }
+  .btn-giant-zero-timer:hover { transform: scale(1.05); background: rgba(239, 68, 68, 0.4); }
 
   /* BARRA INFERIOR */
   .bottom-nav {
@@ -990,7 +1024,6 @@
       <h1 class="cover-title">KUBO <span>FEST</span> 2026</h1>
       <p class="cover-sub">Presentación Oficial de Retos y Desafíos de Programación en Vivo</p>
 
-      <!-- BOTÓN DESTACADO PARA MÚSICA DE ESPERA -->
       <button class="btn-cover-music" id="btnCoverMusic" onclick="toggleIntroMusic()">
         <span>🎶</span>
         <span id="btnCoverMusicText">Poner Música de Espera (Torneo)</span>
@@ -1067,6 +1100,7 @@
             </button>
           </div>
 
+          <!-- TEMPORIZADOR MEJORADO: CON REINICIO Y PUESTA EN CERO -->
           <div class="timer-card">
             <div class="timer-display-box">
               <span class="timer-icon">⏱️</span>
@@ -1074,8 +1108,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-1" onclick="toggleTimer(1)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(1)" title="Volver a empezar desde el tiempo inicial">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(1, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(1, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(1)" title="Poner cronómetro en cero inmediatamente">00:00</button>
             </div>
           </div>
 
@@ -1174,8 +1210,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-2" onclick="toggleTimer(2)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(2)" title="Volver a empezar">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(2, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(2, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(2)" title="Poner en cero">00:00</button>
             </div>
           </div>
 
@@ -1274,8 +1312,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-3" onclick="toggleTimer(3)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(3)" title="Volver a empezar">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(3, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(3, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(3)" title="Poner en cero">00:00</button>
             </div>
           </div>
 
@@ -1374,8 +1414,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-4" onclick="toggleTimer(4)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(4)" title="Volver a empezar">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(4, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(4, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(4)" title="Poner en cero">00:00</button>
             </div>
           </div>
 
@@ -1474,8 +1516,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-5" onclick="toggleTimer(5)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(5)" title="Volver a empezar">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(5, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(5, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(5)" title="Poner en cero">00:00</button>
             </div>
           </div>
 
@@ -1574,8 +1618,10 @@
             </div>
             <div class="timer-buttons">
               <button class="btn-timer start-btn" id="timer-toggle-6" onclick="toggleTimer(6)">Iniciar</button>
+              <button class="btn-timer btn-restart-action" onclick="resetTimer(6)" title="Volver a empezar">↺ Reiniciar</button>
               <button class="btn-timer" onclick="resetTimer(6, 180)">3 Min</button>
               <button class="btn-timer" onclick="resetTimer(6, 300)">5 Min</button>
+              <button class="btn-timer btn-zero-action" onclick="zeroTimer(6)" title="Poner en cero">00:00</button>
             </div>
           </div>
 
@@ -1654,10 +1700,16 @@
         <span>👁️</span> <span id="giantBtnRouteText">Ocultar Ruta</span>
       </button>
       <button class="btn-giant-ctrl btn-giant-reset" onclick="triggerGiantReset()">
-        <span>↺</span> <span>Reiniciar</span>
+        <span>↺</span> <span>Reiniciar Robot</span>
       </button>
       <button class="btn-giant-ctrl" style="background: rgba(255,255,255,0.15); color:white;" onclick="toggleTimer(activeGiantChallenge)">
         <span>⏱️</span> <span>Iniciar / Pausar Cronómetro</span>
+      </button>
+      <button class="btn-giant-ctrl btn-giant-restart-timer" onclick="resetTimer(activeGiantChallenge)">
+        <span>↺</span> <span>Reiniciar Cronómetro</span>
+      </button>
+      <button class="btn-giant-ctrl btn-giant-zero-timer" onclick="zeroTimer(activeGiantChallenge)">
+        <span>⏹</span> <span>00:00</span>
       </button>
     </div>
   </div>
@@ -1687,7 +1739,7 @@
     </div>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT COMPLETA CON SINTETIZADOR DE MÚSICA WEB AUDIO API -->
+  <!-- LÓGICA JAVASCRIPT COMPLETA CON SINTETIZADOR DE MÚSICA ENRIQUECIDO Y CONTROL DE CRONÓMETRO -->
   <script>
     let currentSlide = 0;
     const totalSlides = 7;
@@ -1925,7 +1977,7 @@
           <polyline id="giant-route-line" 
             points="420.1,355.3 380.2,355.3 340.3,355.3 300.3,355.3 260.5,355.3 260.5,313.8 260.5,272.3 220.5,272.3 180.7,272.3 140.8,272.3 140.8,313.8 140.8,355.3" 
             fill="none" stroke="#06b6d4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"
-            opacity="1" style="filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.9));"/>
+            opacity="1" style="filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.9));"/>
         `
       },
       6: {
@@ -2025,10 +2077,11 @@
     }
 
     // ============================================
-    // CRONÓMETROS INDEPENDIENTES PARA CADA RETO
+    // CRONÓMETROS INDEPENDIENTES CON RESET TOTAL
     // ============================================
     let timerIntervals = { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null };
     let timerSeconds = { 1: 180, 2: 180, 3: 180, 4: 180, 5: 180, 6: 180 };
+    let timerPresets = { 1: 180, 2: 180, 3: 180, 4: 180, 5: 180, 6: 180 };
     let timerRunning = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
 
     function formatTime(sec) {
@@ -2043,6 +2096,11 @@
       const giantClock = document.getElementById('giantTimerClock');
 
       if (!timerRunning[ch]) {
+        // Si el tiempo estaba en cero, reiniciarlo antes de arrancar
+        if (timerSeconds[ch] <= 0) {
+          timerSeconds[ch] = timerPresets[ch];
+        }
+
         timerRunning[ch] = true;
         if (btn) {
           btn.textContent = "Pausar";
@@ -2050,7 +2108,7 @@
         }
         playChime(440);
 
-        // Si la música está activa, arranca la música dinámica de reto (suspenso -> groove)
+        // Si la música está activa, arranca la música de reto con su intro de suspenso
         if (musicMuted === false) {
           startChallengeMusic();
         }
@@ -2076,32 +2134,69 @@
           }
         }, 1000);
       } else {
+        // PAUSAR
         clearInterval(timerIntervals[ch]);
         timerRunning[ch] = false;
         if (btn) {
           btn.textContent = "Continuar";
           btn.style.background = "#10b981";
         }
-        // Pausar música si se pausa el cronómetro
         if (currentMusicType === 'challenge') {
           stopMusic();
         }
       }
     }
 
+    // REINICIAR (Volver a empezar desde el tiempo inicial preset)
     function resetTimer(ch, sec) {
       clearInterval(timerIntervals[ch]);
       timerRunning[ch] = false;
-      timerSeconds[ch] = sec;
+
+      if (sec !== undefined) {
+        timerPresets[ch] = sec;
+      }
+      timerSeconds[ch] = timerPresets[ch];
+
       const display = document.getElementById(`timer-display-${ch}`);
       const giantClock = document.getElementById('giantTimerClock');
       const btn = document.getElementById(`timer-toggle-${ch}`);
-      const f = formatTime(sec);
+      const f = formatTime(timerSeconds[ch]);
+
       if (display) {
         display.textContent = f;
         display.classList.remove('warning');
       }
-      if (giantClock) giantClock.textContent = f;
+      if (giantClock) {
+        giantClock.textContent = f;
+        giantClock.classList.remove('warning');
+      }
+      if (btn) {
+        btn.textContent = "Iniciar";
+        btn.style.background = "#10b981";
+      }
+      if (currentMusicType === 'challenge') {
+        stopMusic();
+      }
+    }
+
+    // PONER EN CERO DIRECTO (00:00)
+    function zeroTimer(ch) {
+      clearInterval(timerIntervals[ch]);
+      timerRunning[ch] = false;
+      timerSeconds[ch] = 0;
+
+      const display = document.getElementById(`timer-display-${ch}`);
+      const giantClock = document.getElementById('giantTimerClock');
+      const btn = document.getElementById(`timer-toggle-${ch}`);
+
+      if (display) {
+        display.textContent = "00:00";
+        display.classList.remove('warning');
+      }
+      if (giantClock) {
+        giantClock.textContent = "00:00";
+        giantClock.classList.remove('warning');
+      }
       if (btn) {
         btn.textContent = "Iniciar";
         btn.style.background = "#10b981";
@@ -2112,132 +2207,226 @@
     }
 
     // ==============================================================
-    // MOTOR DE SÍNTESIS MUSICAL NATIVO (WEB AUDIO API - 100% OFFLINE)
+    // MOTOR DE SÍNTESIS MUSICAL NATIVO ENRIQUECIDO (WEB AUDIO API)
+    // Cero estrés: Tonalidades suaves, suspenso marcado y 64 compases variados
     // ==============================================================
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+    // Filtro maestro cálido (elimina frecuencias agudas molestas o estridentes)
+    const masterFilter = audioCtx.createBiquadFilter();
+    masterFilter.type = 'lowpass';
+    masterFilter.frequency.setValueAtTime(1600, audioCtx.currentTime); // Sonido redondo y analógico
+    masterFilter.Q.setValueAtTime(1.0, audioCtx.currentTime);
+
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+
+    masterFilter.connect(masterGain);
+    masterGain.connect(audioCtx.destination);
+
     let musicPlaying = false;
-    let musicMuted = true; // Por defecto apagada para no invadir sin orden del usuario
-    let currentMusicType = null; // 'intro' o 'challenge'
+    let musicMuted = true;
+    let currentMusicType = null;
     let musicInterval = null;
     let musicStep = 0;
 
+    // Frecuencias exactas de notas
     const N = {
-      C2: 65.41, G2: 98.00, A2: 110.00, F2: 87.31,
+      C2: 65.41, D2: 73.42, E2: 82.41, F2: 87.31, G2: 98.00, A2: 110.00, B2: 123.47,
       C3: 130.81, D3: 146.83, E3: 164.81, F3: 174.61, G3: 196.00, A3: 220.00, B3: 246.94,
       C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00, B4: 493.88,
-      C5: 523.25, D5: 587.33, E5: 659.25, G5: 783.99, A5: 880.00
+      C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99, A5: 880.00, B5: 987.77,
+      C6: 1046.50
     };
 
-    function playSynthTone(freq, type = 'sine', duration = 0.16, vol = 0.05) {
+    function playSynthTone(freq, type = 'sine', duration = 0.18, vol = 0.05) {
       if (audioCtx.state === 'suspended') audioCtx.resume();
       try {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = type;
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        // Ataque y decaimiento suave para evitar clics
+        gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(masterFilter);
         osc.start();
         osc.stop(audioCtx.currentTime + duration);
       } catch(e) {}
     }
 
-    function playRhythmHit(type = 'hihat', vol = 0.035) {
+    function playRhythmHit(type = 'hihat', vol = 0.03) {
       if (audioCtx.state === 'suspended') audioCtx.resume();
       try {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         if (type === 'hihat') {
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(2800, audioCtx.currentTime);
+          osc.frequency.setValueAtTime(2400, audioCtx.currentTime);
           gain.gain.setValueAtTime(vol, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
         } else if (type === 'kick') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(130, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(32, audioCtx.currentTime + 0.11);
+          osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(32, audioCtx.currentTime + 0.12);
           gain.gain.setValueAtTime(vol * 2.2, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.11);
-        } else if (type === 'tick') {
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
+        } else if (type === 'clock') {
+          // Reloj tic-tac de suspenso cinematográfico
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(950, audioCtx.currentTime);
-          gain.gain.setValueAtTime(vol * 1.5, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.06);
+          gain.gain.setValueAtTime(vol * 2.0, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.06);
         }
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(masterFilter);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.11);
+        osc.stop(audioCtx.currentTime + 0.12);
       } catch(e) {}
     }
 
-    // Pistas Musicales:
-    // 1. INTRO / ESPERA: Fanfarria de Bienvenida Alegre y Robótica (C Mayor, estilo Nintendo/Lego)
-    const introMelody = [
-      N.C4, N.E4, N.G4, N.C5,
-      N.E4, N.G4, N.C5, N.E5,
-      N.A4, N.C5, N.E5, N.A5,
-      N.G4, N.E4, N.D4, N.C4
+    // ==============================================================
+    // 1. CANCIÓN DE RETO: SUSPENSO INICIAL (24 pasos) + CANCIÓN DE 64 PASOS
+    // ==============================================================
+    // Suspenso: Bajo tenso con tic-tac dramático de reloj y arpegio misterioso
+    const suspenseMelody = [
+      0, 0, N.E4, 0, 0, 0, N.A4, 0,
+      0, 0, N.B4, 0, 0, 0, N.C5, 0,
+      0, N.E5, 0, N.D5, N.C5, N.B4, N.A4, N.G4
     ];
-    const introBass = [
-      N.C3, 0, N.C3, 0,
-      N.E3, 0, N.E3, 0,
-      N.A3, 0, N.A3, 0,
-      N.G3, 0, N.G3, 0
-    ];
-
-    // 2. RETO: Primeros 8 pasos son SUSPENSO (Tic-tac tenso de reloj y bajo misterioso)
-    // Luego pasa al GROOVE ROBÓTICO RÍTMICO estimulante para pensar
-    const challengeSuspenseMelody = [
-      0, N.E4, 0, N.G4, 0, N.E4, 0, N.B4,
-      0, N.E4, 0, N.G4, 0, N.D4, 0, N.C4
-    ];
-    const challengeSuspenseBass = [
-      N.A2, 0, N.A2, 0, N.F2, 0, N.F2, 0,
-      N.A2, 0, N.A2, 0, N.G2, 0, N.G2, 0
+    const suspenseBass = [
+      N.A2, 0, 0, 0, N.A2, 0, 0, 0,
+      N.F2, 0, 0, 0, N.F2, 0, 0, 0,
+      N.E2, 0, 0, 0, N.E2, 0, N.G2, 0
     ];
 
-    const challengeGrooveMelody = [
-      N.E4, N.E4, 0, N.G4, N.A4, 0, N.G4, 0,
-      N.E4, N.D4, N.E4, 0, N.G4, 0, N.C5, 0
+    // Gran Canción Robótica Alegre: 64 Pasos / 32 Compases con 4 Frases Ricas
+    // Frase A (C - G - Am - F): Tema cantable y feliz
+    // Frase B (Dm - G - Em - Am): Exploración y aventura
+    // Frase C (F - G - C - Am): Juego rítmico robótico
+    // Frase D (Dm - G7 - C - C): Fanfarria triunfal de resolución
+    const challengeMelody64 = [
+      // Frase A (Compases 1-4)
+      N.C5, 0, N.E5, N.G4, N.C5, 0, N.D5, 0,
+      N.B4, 0, N.D5, N.G4, N.B4, 0, N.C5, 0,
+      N.A4, 0, N.C5, N.E4, N.A4, 0, N.G4, 0,
+      N.F4, 0, N.A4, N.C5, N.D5, 0, N.C5, 0,
+
+      // Frase B (Compases 5-8)
+      N.D5, 0, N.F5, N.A4, N.D5, 0, N.E5, 0,
+      N.F5, 0, N.D5, N.B4, N.G4, 0, N.A4, N.B4,
+      N.G5, 0, N.E5, N.B4, N.G4, 0, N.A4, 0,
+      N.C5, 0, N.E5, N.C5, N.A4, 0, 0, 0,
+
+      // Frase C (Compases 9-12): Juego rítmico juguetón
+      N.A4, N.C5, N.A4, N.C5, N.F5, 0, N.E5, 0,
+      N.B4, N.D5, N.B4, N.D5, N.G5, 0, N.F5, 0,
+      N.E5, N.G5, N.E5, N.C5, N.G4, 0, N.A4, 0,
+      N.C5, N.E5, N.C5, N.A4, N.E4, 0, N.G4, 0,
+
+      // Frase D (Compases 13-16): Resolución y fanfarria
+      N.F4, N.A4, N.D5, N.F5, N.E5, N.D5, N.C5, N.D5,
+      N.D5, N.G4, N.B4, N.D5, N.F5, 0, N.E5, N.D5,
+      N.C5, 0, N.E5, 0, N.G5, 0, N.C6, 0,
+      N.G5, 0, N.E5, 0, N.D5, 0, N.C5, 0
     ];
-    const challengeGrooveBass = [
-      N.A3, N.A3, 0, N.A3, N.C4, 0, N.G3, N.G3,
-      N.A3, N.A3, 0, N.A3, N.E3, 0, N.G3, 0
+
+    const challengeBass64 = [
+      // Frase A (C - G - Am - F)
+      N.C3, 0, N.C3, 0, N.G2, 0, N.C3, 0,
+      N.G2, 0, N.G2, 0, N.D3, 0, N.G2, 0,
+      N.A2, 0, N.A2, 0, N.E3, 0, N.A2, 0,
+      N.F2, 0, N.F2, 0, N.C3, 0, N.F2, 0,
+
+      // Frase B (Dm - G - Em - Am)
+      N.D3, 0, N.D3, 0, N.A2, 0, N.D3, 0,
+      N.G2, 0, N.G2, 0, N.D3, 0, N.G2, 0,
+      N.E2, 0, N.E2, 0, N.B2, 0, N.E2, 0,
+      N.A2, 0, N.A2, 0, N.E3, 0, N.A2, 0,
+
+      // Frase C (F - G - C - Am)
+      N.F2, N.F2, 0, N.F2, N.C3, 0, N.F2, 0,
+      N.G2, N.G2, 0, N.G2, N.D3, 0, N.G2, 0,
+      N.C3, N.C3, 0, N.C3, N.G2, 0, N.C3, 0,
+      N.A2, N.A2, 0, N.A2, N.E3, 0, N.A2, 0,
+
+      // Frase D (Dm - G7 - C - C)
+      N.D3, 0, N.D3, 0, N.A2, 0, N.D3, 0,
+      N.G2, 0, N.G2, 0, N.D3, 0, N.G2, 0,
+      N.C3, 0, N.G2, 0, N.C3, 0, N.E3, 0,
+      N.G2, 0, N.G2, 0, N.C3, 0, 0, 0
+    ];
+
+    // ==============================================================
+    // 2. MÚSICA DE ESPERA / PORTADA (Tema Marimba/Glockenspiel Cálido)
+    // ==============================================================
+    const introMelody64 = [
+      N.E4, 0, N.G4, 0, N.C5, 0, N.D5, 0,
+      N.E5, 0, N.D5, 0, N.C5, 0, N.G4, 0,
+      N.A4, 0, N.C5, 0, N.E5, 0, N.D5, 0,
+      N.C5, 0, N.A4, 0, N.G4, 0, 0, 0,
+
+      N.F4, 0, N.A4, 0, N.C5, 0, N.E5, 0,
+      N.D5, 0, N.C5, 0, N.B4, 0, N.G4, 0,
+      N.C5, 0, N.E5, 0, N.G5, 0, N.E5, 0,
+      N.D5, 0, N.C5, 0, N.C5, 0, 0, 0
+    ];
+
+    const introBass64 = [
+      N.C3, 0, N.G2, 0, N.C3, 0, N.E3, 0,
+      N.G2, 0, N.D3, 0, N.G2, 0, N.B2, 0,
+      N.A2, 0, N.E3, 0, N.A2, 0, N.C3, 0,
+      N.F2, 0, N.C3, 0, N.F2, 0, N.A2, 0,
+
+      N.F2, 0, N.C3, 0, N.F2, 0, N.A2, 0,
+      N.G2, 0, N.D3, 0, N.G2, 0, N.B2, 0,
+      N.C3, 0, N.G2, 0, N.C3, 0, N.E3, 0,
+      N.G2, 0, N.G2, 0, N.C3, 0, 0, 0
     ];
 
     function musicTick() {
       if (!musicPlaying) return;
-      const isIntro = (currentMusicType === 'intro');
-      const stepIdx = musicStep % 16;
 
-      if (isIntro) {
-        // Intro alegre
-        const m = introMelody[stepIdx];
-        if (m) playSynthTone(m, 'sine', 0.16, 0.055);
-        const b = introBass[stepIdx];
-        if (b) playSynthTone(b, 'triangle', 0.14, 0.07);
-        if (stepIdx % 4 === 0) playRhythmHit('kick', 0.04);
-        else if (stepIdx % 2 === 0) playRhythmHit('hihat', 0.025);
-      } else {
-        // Reto: los primeros 16 pulsos (aprox 2 segundos) son de suspenso puro
-        const isSuspense = (musicStep < 16);
-        const m = isSuspense ? challengeSuspenseMelody[stepIdx] : challengeGrooveMelody[stepIdx];
-        const b = isSuspense ? challengeSuspenseBass[stepIdx] : challengeGrooveBass[stepIdx];
+      if (currentMusicType === 'intro') {
+        // Música de espera alegre y suave
+        const idx = musicStep % 32;
+        const m = introMelody64[idx];
+        const b = introBass64[idx];
 
-        if (m) playSynthTone(m, isSuspense ? 'sine' : 'triangle', 0.14, isSuspense ? 0.04 : 0.06);
-        if (b) playSynthTone(b, 'triangle', 0.12, 0.08);
+        if (m) playSynthTone(m, 'sine', 0.18, 0.045);
+        if (b) playSynthTone(b, 'triangle', 0.16, 0.055);
 
-        if (isSuspense) {
-          // Tic-tac de suspenso
-          if (stepIdx % 2 === 0) playRhythmHit('tick', 0.05);
+        if (idx % 4 === 0) playRhythmHit('kick', 0.035);
+        else if (idx % 2 === 0) playRhythmHit('hihat', 0.02);
+
+      } else if (currentMusicType === 'challenge') {
+        // Si estamos en los primeros 24 pulsos (aprox 6 segundos): SUSPENSO
+        if (musicStep < 24) {
+          const m = suspenseMelody[musicStep];
+          const b = suspenseBass[musicStep];
+
+          if (m) playSynthTone(m, 'triangle', 0.22, 0.05);
+          if (b) playSynthTone(b, 'sine', 0.25, 0.075);
+
+          // Tic-tac de reloj cada pulso par
+          if (musicStep % 2 === 0) {
+            playRhythmHit('clock', 0.05);
+          }
         } else {
-          // Ritmo robótico estimulante
-          if (stepIdx % 4 === 0) playRhythmHit('kick', 0.045);
-          else if (stepIdx % 2 === 0) playRhythmHit('hihat', 0.03);
+          // GRAN CANCIÓN ROBÓTICA ALEGRE Y VARIADA (64 Pasos)
+          const grooveStep = (musicStep - 24) % 64;
+          const m = challengeMelody64[grooveStep];
+          const b = challengeBass64[grooveStep];
+
+          if (m) playSynthTone(m, 'sine', 0.16, 0.05);
+          if (b) playSynthTone(b, 'triangle', 0.14, 0.065);
+
+          // Ritmo no invasivo
+          if (grooveStep % 4 === 0) playRhythmHit('kick', 0.04);
+          else if (grooveStep % 2 === 0) playRhythmHit('hihat', 0.025);
         }
       }
 
@@ -2251,7 +2440,9 @@
       musicMuted = false;
       musicStep = 0;
       if (audioCtx.state === 'suspended') audioCtx.resume();
-      const intervalMs = (type === 'intro') ? 140 : 125;
+
+      // Tempo agradable y bailable (~126 BPM)
+      const intervalMs = (type === 'intro') ? 145 : 130;
       musicInterval = setInterval(musicTick, intervalMs);
       updateMusicUI();
     }
@@ -2331,7 +2522,7 @@
         gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(masterFilter);
         osc.start();
         osc.stop(audioCtx.currentTime + 0.5);
       } catch(e) {}
